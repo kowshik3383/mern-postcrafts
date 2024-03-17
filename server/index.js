@@ -2,24 +2,27 @@ import express from 'express';
 import mongoose from 'mongoose';
 import authRoute from './routes/auth.route.js';
 import userRoute from './routes/user.route.js';
-import cors from 'cors' 
+import cors from 'cors';
+import path from 'path';
+import dotenv from 'dotenv';
+
 const app = express();
-import path from 'path'
 const port = 6000;
-import dotenv from 'dotenv'
-dotenv.config()
+
+dotenv.config();
+
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO)
+mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 // Route for handling requests related to users
 app.use('/api/user', userRoute);
-app.use('/api/auth',authRoute);
+app.use('/api/auth', authRoute);
 
 // Error handler for invalid routes
 app.use((req, res, next) => {
@@ -27,6 +30,7 @@ app.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
+
 app.get('/hello', (req, res) => {
   res.send('Hello, World!');
 });
@@ -39,8 +43,6 @@ app.use((err, req, res, next) => {
     }
   });
 });
-
-
 
 
 // Start the server
