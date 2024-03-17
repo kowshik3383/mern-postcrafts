@@ -20,9 +20,7 @@ app.use(cors())
 // Route for handling requests related to users
 app.use('/api/user', userRoute);
 app.use('/api/auth',authRoute);
-app.get('*', (req ,res)=>{
-  res.sendFile(path(join(__dirname ,'my-project' ,'dist' ,'index.html')))
-})
+
 // Error handler for invalid routes
 app.use((req, res, next) => {
   const error = new Error('Not Found');
