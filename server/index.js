@@ -27,6 +27,9 @@ app.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
 // Global error handler
 app.use((err, req, res, next) => {

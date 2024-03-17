@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
-import Hero from './components/Hero';
-import FeatureSection from './FeatureSection';
-import About from './components/About';
-import Pricing from './components/Pricing';
-import Contact from './components/Contact';
-import Loading from './components/Loading'; // Ensure this component is defined
-import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
+import Hero from "./components/Hero";
+import FeatureSection from "./FeatureSection";
+import About from "./components/About";
+import Pricing from "./components/Pricing";
+import Contact from "./components/Contact";
+import Loading from "./components/Loading"; // Ensure this component is defined
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 disableReactDevTools();
 function App() {
@@ -29,7 +29,8 @@ function App() {
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/" element={<MainLayout />} /> {/* Updated path and component */}
+            <Route path="/" element={<MainLayout />} />{" "}
+            {/* Updated path and component */}
           </Routes>
         </BrowserRouter>
       )}
@@ -41,6 +42,7 @@ function App() {
 function MainLayout() {
   return (
     <>
+      <SignIn />
       <Hero />
       <FeatureSection />
       <About />
