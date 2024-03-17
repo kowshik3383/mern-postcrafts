@@ -33,7 +33,7 @@ export default function SignUp() {
 
     try {
       setLoading(true);
-      const res = await fetch('https://mern-postcrafts.vercel.app/auth/signup', {
+      const res = await fetch('https://mern-postcrafts.onrender.com/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

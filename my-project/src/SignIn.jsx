@@ -26,7 +26,7 @@ export default function SignIn() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('https://mern-postcrafts.vercel.app/auth/signin', {
+      const res = await fetch('https://mern-postcrafts.onrender.com/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
