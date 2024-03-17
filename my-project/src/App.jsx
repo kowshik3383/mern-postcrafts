@@ -27,7 +27,7 @@ function App() {
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/*" element={<MainLayout />} /> {/* Updated path and component */}
+            <Route path="/" element={<MainLayout />} /> {/* Updated path and component */}
           </Routes>
         </BrowserRouter>
       )}
