@@ -33,7 +33,7 @@ export default function SignUp() {
 
     try {
       setLoading(true);
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch('https://mern-postcrafts-1.onrender.com/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
