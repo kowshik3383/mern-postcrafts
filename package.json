@@ -18,8 +18,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon server/index.js",
-    "start": "node server/index.js"
-    
+    "start": "node server/index.js",
+    "build": "npm install && npm install --prefix my-project && npm run build --prefix my-project"
   },
   "keywords": [],
   "author": "",
