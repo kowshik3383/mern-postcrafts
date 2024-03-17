@@ -4,7 +4,7 @@ import authRoute from './routes/auth.route.js';
 import userRoute from './routes/user.route.js';
 import cors from 'cors' 
 const app = express();
-const uri = 'mongodb://localhost:27017/data';
+
 const port = 6000;
 import dotenv from 'dotenv'
 dotenv.config()
