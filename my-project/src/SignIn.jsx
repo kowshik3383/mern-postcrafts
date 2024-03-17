@@ -26,7 +26,7 @@ export default function SignIn() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('https://mern-postcrafts.onrender.com/auth/signin', {
+      const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
