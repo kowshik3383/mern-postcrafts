@@ -8,9 +8,7 @@ import About from "./components/About";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import Loading from "./components/Loading";
-import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
-disableReactDevTools();
 
 function App() {
   const [loading, setLoading] = useState(true);
