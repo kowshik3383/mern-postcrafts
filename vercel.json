@@ -2,7 +2,7 @@
 	"version": 2,
 	"builds": [
 	  {
-		"src": "", 
+		"src": "build",
 		"use": "@vercel/static-build"
 	  }
 	],
@@ -12,9 +12,6 @@
 		"src": "/.*",
 		"dest": "/index.html"
 	  }
-	],
-	"rewrites": [
-	  { "source": "/(.*)", "destination": "/" }  
 	]
   }
   
