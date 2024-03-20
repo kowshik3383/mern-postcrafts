@@ -3,13 +3,13 @@ import React from "react";
 const About = () => {
   return (
     <>
-      <section className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] bg-white dark:bg-dark">
-        <div className="container mx-auto">
-          <div className="flex flex-wrap items-center justify-between -mx-4">
-            <div className="w-full px-4 lg:w-6/12">
-              <div className="flex items-center -mx-3 sm:-mx-4">
-                <div className="w-full px-3 sm:px-4 xl:w-1/2">
-                  <div className="py-3 sm:py-4">
+      <section className="overflow-hidden pt-10 md:pt-20 pb-6 lg:pt-20 lg:pb-12 xl:pb-16 bg-white dark:bg-dark">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap items-center justify-between">
+            <div className="w-full md:w-6/12 lg:w-5/12 xl:w-6/12 px-2 md:px-0">
+              <div className="flex items-center">
+                <div className="w-full md:w-1/2">
+                  <div className="py-3 md:py-4">
                     <img
                       src="https://i.ibb.co/gFb3ns6/image-1.jpg"
                       alt=""
@@ -627,7 +627,7 @@ const About = () => {
                   href="/sign-up"
                   className="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-transparent rounded-md px-7 bg-primary hover:bg-opacity-90"
                 >
-                 Register
+                  Register
                 </a>
               </div>
             </div>

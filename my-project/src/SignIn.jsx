@@ -1,86 +1,58 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-export default function SignIn() {
-  const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+function SignIn() {
   const navigate = useNavigate();
+  // Hook to manage navigation history
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Check if email and password are filled
-    if (!formData.email || !formData.password) {
-      setError("Please fill in both email and password.");
-      return;
+    const { email, password } = formData;
+    if ( !email || !password ) {
+      alert('Please fill in all required fields.');
+      return; // Prevent form submission if validation fails
     }
 
-    setLoading(true);
-    setError(null);
     try {
-      const res = await fetch('https://mern-postcrafts.vercel.app/auth/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      console.log(data);
-      if (data.success === false) {
-        setError(data.message);
-      } else {
-        navigate('/');
-      }
+      const response = await axios.post('https://server-4-muw9.onrender.com/api/signin', formData);
+      console.log('Login Successful:', response.data);
+      
+      navigate('/')
     } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
+      console.error('Login Error:', error);
     }
   };
 
   return (
-    <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <input
-          type='email'
-          placeholder='email'
-          className='border p-3 rounded-lg'
-          id='email'
-          onChange={handleChange}
-        />
-        <input
-          type='password'
-          placeholder='password'
-          className='border p-3 rounded-lg'
-          id='password'
-          onChange={handleChange}
-        />
-
-        <button
-          disabled={loading}
-          className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-        >
-          {loading ? 'Loading...' : 'Sign In'}
-        </button>
-       
+    <div className="max-w-md mx-auto px-4 py-8 rounded-md bg-white shadow-lg">
+      <div className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">Welcome back to <span className="text-[#7747ff]">App</span></div>
+      <div className="text-sm font-normal mb-4 text-center text-[#1e0e4b]">Log in to your account</div>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <div className="block relative"> 
+          <label htmlFor="email" className="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2">Email</label>
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0" required />
+        </div>
+        <div className="block relative"> 
+          <label htmlFor="password" className="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2">Password</label>
+          <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-900 outline-0" required />
+        </div>
+        <div>
+          <a href="#" className="text-sm text-[#7747ff]">Forgot your password?</a>
+        </div>
+        <button type="submit" className="bg-[#7747ff] w-max m-auto px-6 py-2 rounded text-white text-sm font-normal">Submit</button>
       </form>
-      <div className='flex gap-2 mt-5'>
-        <p>Dont have an account?</p>
-        <Link to={'/sign-up'}>
-          <span className='text-blue-700'>Sign up</span>
-        </Link>
-      </div>
-      {error && <p className='text-red-500 mt-5'>{error}</p>}
+      <div className="text-sm text-center mt-[1.6rem]">Don’t have an account yet? <a href="/sign-up" className="text-sm text-[#7747ff]">Sign up for free!</a></div>
     </div>
   );
 }
+
+export default SignIn;

@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://mern-postcrafts.vercel.app/',
+        target: 'http://localhost:2000/',
         secure: false,
       },
     },
