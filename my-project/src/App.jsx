@@ -9,7 +9,6 @@ import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
 import Loading from "./components/Loading";
 
-
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -28,22 +27,19 @@ function App() {
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/" element={<MainLayout />} />
+            <Route path="/" element={
+              <>
+                <Hero />
+                <FeatureSection />
+                <About />
+                <Pricing />
+                <Contact />
+              </>
+            } />
+            
           </Routes>
         </BrowserRouter>
       )}
-    </>
-  );
-}
-
-function MainLayout() {
-  return (
-    <>
-      <Hero />
-      <FeatureSection />
-      <About />
-      <Pricing />
-      <Contact />
     </>
   );
 }
