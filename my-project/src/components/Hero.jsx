@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <>
@@ -93,24 +93,24 @@ const Hero = () => {
 
                 <div className="w-px h-5 bg-black/20"></div>
 
-                <a
-                  href="/sign-up"
+                <Link to='/sign-up'
+                  
                   title=""
                   className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
                 >
                   {" "}
                   Register{" "}
-                </a>
+                </Link>
 
-                <a
-                  href="/sign-in"
+                <Link
+                  to="/sign-in"
                   title=""
                   className="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-200 focus:bg-black focus:text-white"
                   role="button"
                 >
                   {" "}
                   Login{" "}
-                </a>
+                </Link>
               </div>
             </div>
           </div>
